@@ -7,6 +7,31 @@ from epics import PV
 from readout import log
 
 
+def wait_pv(epics_pv, wait_val, timeout=-1):
+    """Wait on a pv to be a value until max_timeout (default forever)
+       delay for pv to change
+    """
+
+    time.sleep(.01)
+    start_time = time.time()
+    while True:
+        pv_val = epics_pv.get()
+        if isinstance(pv_val, float):
+            if abs(pv_val - wait_val) < EPSILON:
+                return True
+        if pv_val != wait_val:
+            if timeout > -1:
+                current_time = time.time()
+                diff_time = current_time - start_time
+                if diff_time >= timeout:
+                    log.error('  *** wait_pv(%s, %d, %5.2f reached max timeout. Return False',
+                                  epics_pv.pvname, wait_val, timeout)
+                    return False
+            time.sleep(.01)
+        else:
+            return True
+
+
 def onChanges(pvname=None, value=None, char_value=None, **kw):
 
     log.warning('PV Changed => Slack: %s %s', pvname, char_value)
