@@ -1,4 +1,3 @@
-python-dotenv
-slack-bolt
-pyepics
 numpy
+pyepics
+
