@@ -91,7 +91,7 @@ def main():
     if not os.path.exists(logs_home):
         os.makedirs(logs_home)
     # setup logger
-    lfname = logs_home + 'slack_' + datetime.strftime(datetime.now(), "%Y-%m-%d_%H:%M:%S") + '.log'
+    lfname = logs_home + 'readout_' + datetime.strftime(datetime.now(), "%Y-%m-%d_%H:%M:%S") + '.log'
     log.setup_custom_logger(lfname)
     log.warning('Logs are saved at: %s' % lfname)
 

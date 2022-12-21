@@ -1,5 +1,5 @@
 '''
-    slack custom logger
+    readout custom logger
     
 '''
 import logging
