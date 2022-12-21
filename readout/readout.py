@@ -12,7 +12,7 @@ def measure(epics_pvs, exposure_time=1, size_x=512, size_y=512, binning=1):
     camera_acquire = 0
     if epics_pvs['CamAcquire'].get() == 1:
         camera_acquire = 1
-        log.info('stopping the camera')
+        log.info('Stopping camera')
         epics_pvs['CamAcquire'].put('Done')
         utils.wait_pv(epics_pvs['CamAcquire'], 0)
 
@@ -30,8 +30,15 @@ def measure(epics_pvs, exposure_time=1, size_x=512, size_y=512, binning=1):
     cam_max_size_y_rbv      = epics_pvs['CamMaxSizeYRBV'].get()
     cam_image_mode          = epics_pvs['CamImageMode'].get()
     cam_image_mode_rbv      = epics_pvs['CamImageModeRBV'].get()
+    cam_model_rbv           = epics_pvs['CamModelRBV'].get()
+    cam_manufacturer_rbv    = epics_pvs['CamManufacturerRBV'].get()
+    cam_array_size_x_rbv    = epics_pvs['CamArraySizeXRBV'].get()
+    cam_array_size_y_rbv    = epics_pvs['CamArraySizeXRBV'].get()
 
+    log.info('Camera Model: %s', cam_manufacturer_rbv)
+    log.info('Camera Model: %s', cam_model_rbv)
     log.info('Sensor size: (%s, %s)', cam_max_size_x_rbv, cam_max_size_y_rbv)
+    log.info('Image  size: (%s, %s)', cam_array_size_x_rbv, cam_array_size_y_rbv)
 
     epics_pvs['CamAcquireTime'].put(0)
     epics_pvs['CamMinX'].put(0)
@@ -53,6 +60,6 @@ def measure(epics_pvs, exposure_time=1, size_x=512, size_y=512, binning=1):
     # if the camera was collecting images start it again
     if camera_acquire == 1:
         time.sleep(1)
-        log.info('restarting the camera')
+        log.info('Restarting amera')
         epics_pvs['CamAcquire'].put('Acquire')
         utils.wait_pv(epics_pvs['CamAcquire'], 1)

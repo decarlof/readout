@@ -17,20 +17,21 @@ Usage
 For help::
 
     readout show -h
-    2022-12-21 15:48:22,430 - Logs are saved at: /home/beams/USER2BMB/logs/readout_2022-12-21_15:48:22.log
-    2022-12-21 15:48:22,436 - General
-    2022-12-21 15:48:22,436 -   config           /home/beams/USER2BMB/readout.conf
-    2022-12-21 15:48:22,436 -   verbose          True
-    2022-12-21 15:48:22,436 - Checking  2bmbSP1:
-    2022-12-21 15:48:23,447 -   OK  2bmbSP1:cam1:Manufacturer_RBV is connected: FLIR
-    2022-12-21 15:48:23,447 - stopping the camera
-    2022-12-21 15:48:23,560 - Sensor size: (2448, 2048)
-    2022-12-21 15:48:24,183 - 0 s: 71.0 fps
-    2022-12-21 15:48:25,184 - 1 s: 44.0 fps
-    2022-12-21 15:48:26,185 - 2 s: 86.0 fps
-    2022-12-21 15:48:26,185 - Max: 86.0 fps
-    2022-12-21 15:48:26,186 - Readout time 11.627906976744185 ms
-    2022-12-21 15:48:27,187 - restarting the camera
+    2022-12-21 16:04:24,939 - Logs are saved at: /home/beams/USER2BMB/logs/readout_2022-12-21_16:04:24.log
+    2022-12-21 16:04:24,942 - General
+    2022-12-21 16:04:24,942 -   config           /home/beams/USER2BMB/readout.conf
+    2022-12-21 16:04:24,942 -   verbose          True
+    2022-12-21 16:04:24,943 - Checking  2bmbSP1:
+    2022-12-21 16:04:25,950 -   OK  2bmbSP1:cam1:Manufacturer_RBV is connected: FLIR
+    2022-12-21 16:04:25,950 - Camera Model: FLIR
+    2022-12-21 16:04:25,950 - Camera Model: Oryx ORX-10G-51S5M
+    2022-12-21 16:04:25,950 - Sensor size: (2448, 2048)
+    2022-12-21 16:04:25,950 - Image  size: (2448, 2448)
+    2022-12-21 16:04:26,575 - 0 s: 0.0 fps
+    2022-12-21 16:04:27,576 - 1 s: 8.0 fps
+    2022-12-21 16:04:28,577 - 2 s: 90.0 fps
+    2022-12-21 16:04:28,577 - Max: 90.0 fps
+    2022-12-21 16:04:28,578 - Readout time 11.11111111111111 ms
 
 For all options::
 
