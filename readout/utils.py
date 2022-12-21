@@ -96,3 +96,19 @@ def tupleize(num_items=None, conv=float, dtype=tuple):
         return result
 
     return split_values
+
+
+def max_seconds(max_seconds, *, interval=1):
+    interval = int(interval)
+    start_time = time.time()
+    end_time = start_time + max_seconds
+    yield 0
+    while time.time() < end_time:
+        if interval > 0:
+            next_time = start_time
+            while next_time < time.time():
+                next_time += interval
+            time.sleep(int(round(next_time - time.time())))
+        yield int(round(time.time() - start_time))
+        if int(round(time.time() + interval)) > int(round(end_time)): 
+            return
