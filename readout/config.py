@@ -6,7 +6,7 @@ import configparser
 import numpy as np
 from collections import OrderedDict
 from readout import log
-from readout import util
+from readout import utils
 
 CONFIG_FILE_NAME = os.path.join(str(pathlib.Path.home()), 'readout.conf')
 
@@ -29,7 +29,44 @@ SECTIONS['READOUT'] = {
         'default': '2bmbSP2:',
         'type': str,
         'help': "AreaDetector prefix"},
+    'min-x': {
+        'type': int,
+        'default': 0,
+        'help': "detector top left ROI horizontal corner"},
+    'min-y': {
+        'type': int,
+        'default': 0,
+        'help': "detector top left ROI vertical corner"},
+    'size-x': {
+        'type': int,
+        'default': -1,
+        'help': "detector top left ROI horizontal corner"},
+    'size-y': {
+        'type': int,
+        'default': -1,
+        'help': "detector top left ROI vertical corner"},
+    'pixel-format': {
+        'default': 'Mono8',
+        'type': str,
+        'help': 'Area detector pixel format',
+        'choices': ['Mono8', 'Mono16', 'Mono10Packed', 'Mono12Packed', 'Mono10p', 'Mono12p']},
+    'gc-adc-bit-depth': {
+        'default': 'Bit8',
+        'type': str,
+        'help': 'GenIcam ADC bit depth',
+        'choices': ['Bit8', 'Bit10', 'Bit12']},
+    'binning': {
+        'type': utils.positive_int,
+        'default': 0,
+        'help': "Reconstruction binning factor as power(2, choice)",
+        'choices': [0, 1, 2]},
+    'bits': {
+        'default': '8',
+        'type': int,
+        'help': 'Area detector pixel format',
+        'choices': [8, 10, 12, 16]},
         }
+
 
 READOUT_PARAMS   = ('READOUT', )
 NICE_NAMES = ('General', 'Readout')

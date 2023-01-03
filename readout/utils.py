@@ -69,3 +69,11 @@ def max_seconds(max_seconds, *, interval=1):
         yield int(round(time.time() - start_time))
         if int(round(time.time() + interval)) > int(round(end_time)): 
             return
+
+def positive_int(value):
+    """Convert *value* to an integer and make sure it is positive."""
+    result = int(value)
+    if result < 0:
+        raise argparse.ArgumentTypeError('Only positive integers are allowed')
+
+    return result
